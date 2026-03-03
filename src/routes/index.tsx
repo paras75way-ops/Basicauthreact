@@ -6,7 +6,7 @@ import PrivateLayout from "../layouts/Privatelayout";
 import SignIn from "../pages/Signin";
 import SignUp from "../pages/Signup";
 import Dashboard from "../pages/Dashboard";
-
+import ChangePassword from "../pages/changepassword"
 import { requireGuest, userLoader } from "./loader";
 import { signInAction } from "./actions/signin.action";
 import { signUpAction } from "./actions/signup.action";
@@ -31,6 +31,7 @@ export const router = createBrowserRouter([
     loader: userLoader,
     children: [
       { path: "/dashboard", element: <Dashboard /> },
+      { path: "/change-password", element: <ChangePassword /> },
     ],
   },
 ]);
