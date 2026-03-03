@@ -15,9 +15,19 @@ export function requireGuest() {
   return null;
 }
 
-export function userLoader() {
-  if (!isAuthenticated()) {
+ export async function userLoader() {
+  const token = localStorage.getItem("accessToken");
+
+  if (!token) {
     throw redirect("/signin");
   }
-  return getUser();
+
+  const user = await getUser();
+
+  if (!user) {
+    localStorage.removeItem("accessToken");
+    throw redirect("/signin");
+  }
+
+  return user;
 }

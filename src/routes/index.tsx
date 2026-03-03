@@ -9,14 +9,20 @@ import Dashboard from "../pages/Dashboard";
 
 import { requireGuest, userLoader } from "./loader";
 import { signInAction } from "./actions/signin.action";
-
+import { signUpAction } from "./actions/signup.action";
+ 
+import VerifyEmail from "../pages/VerifyEmail";
 export const router = createBrowserRouter([
+  {
+    path: "/verify-email/:token",
+    element: <VerifyEmail />,
+  },
   {
     element: <PublicLayout />,
     loader: requireGuest,
     children: [
       { path: "/signin", element: <SignIn />, action: signInAction },
-      { path: "/signup", element: <SignUp /> },
+      { path: "/signup", element: <SignUp />,action:signUpAction },
     ],
   },
   {
